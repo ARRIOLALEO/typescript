@@ -41,3 +41,7 @@ function displayCar(car:{
     return str
 }
 console.log(displayCar({brand:"toyota",year:2002,color:"red"}))
+const car:[string,string,number] = ["hello", "world", 100]
+const cars:string[] =[]
+cars.push("mario")
+cars.push(250)
