@@ -44,4 +44,32 @@ console.log(displayCar({brand:"toyota",year:2002,color:"red"}))
 const car:[string,string,number] = ["hello", "world", 100]
 const cars:string[] =[]
 cars.push("mario")
-cars.push(250)
+type info = number | Error
+function data(information:info){
+    if( information instanceof Error){
+        console.log(information)    
+    }else{
+        console.log(information)
+    }
+}
+
+type numberString = number | string
+function sums(a:number,b:number):number
+function sums(a:string,b:string) :string
+function sums(a , b):number | string{
+    const c = (a + b)
+    return c
+}
+
+
+const myNewButton = document.createElement("button")
+
+function addClickHandler(this:HTMLButtonElement,ev:MouseEvent):void{
+    this.disabled = false
+}   
+
+
+myNewButton.addEventListener("click",addClickHandler)
+
+
+
