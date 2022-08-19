@@ -127,3 +127,38 @@ if(newTransport instanceof Boat){
 }
 
 // we need to exhausts all the possibilities before to use never method.
+
+
+// it is needed to transform the array into an object were the key is the id of the object
+interface PhoneElement{
+    customerId:string,
+    areaCode:string,
+    num:string
+}
+
+interface objectOfPhoneElements{
+    [key:string]:PhoneElement
+}
+
+const phoneList:PhoneElement[] = [
+    { customerId: "0001", areaCode: "321", num: "123-4566" },
+    { customerId: "0002", areaCode: "174", num: "142-3626" },
+    { customerId: "0003", areaCode: "192", num: "012-7190" },
+    { customerId: "0005", areaCode: "402", num: "652-5782" },
+    { customerId: "0004", areaCode: "301", num: "184-8501" },
+  ]
+
+
+function toAnObjectPhoneElement<T>(myArray:T[],idGen:(arg:T)=> string):{[key:string]:T}{
+    const objectSolution:{[k:string]:T} = {}
+    myArray.forEach(element=>{
+        const id = idGen(element)
+        objectSolution[id] = {...element}
+    })
+    return objectSolution
+}
+
+
+const phoneObjects = toAnObjectPhoneElement(phoneList,(e)=>e.customerId)
+console.log(phoneObjects)
+const names = toAnObjectPhoneElement([{name:"mario"},{name:"jose"}],(e)=>e.name)
